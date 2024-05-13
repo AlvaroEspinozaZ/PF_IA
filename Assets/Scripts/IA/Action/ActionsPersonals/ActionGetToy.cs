@@ -22,7 +22,7 @@ public class ActionGetToy : ActionNodeVehicle
     {
         switch (Unit)
         {
-            case TypeUnit.Soldier:
+            case TypeUnit.Dog:
                 if (aICharacterVehicle is AICharacterVehicleSoldier)
                 {
                     ((AICharacterVehicleSoldier)aICharacterVehicle).MoveToObject();

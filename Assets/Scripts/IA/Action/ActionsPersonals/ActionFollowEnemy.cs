@@ -22,8 +22,8 @@ public class ActionFollowEnemy : ActionNodeVehicle
     {
         switch (Unit)
         {
-            case TypeUnit.Soldier:
-                if (aICharacterVehicle is AICharacterVehicleSoldier)
+            case TypeUnit.Dog:
+                if (aICharacterVehicle is AICharacterVehicleDog)
                 {
                     ((AICharacterVehicleSoldier)aICharacterVehicle).MoveToEnemy();
                 }

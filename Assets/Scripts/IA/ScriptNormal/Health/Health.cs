@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TypeUnit { Zombie, Soldier, None }
+public enum TypeUnit { Dog, Sheep, Wolf, None }
 public class Health : MonoBehaviour
 {
 
@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public int _life;
     public int _maxLife;
     public bool IsDead { get => _life == 0; }
+    public Transform AimOffset;
+
 
 
 

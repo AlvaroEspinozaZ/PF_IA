@@ -22,10 +22,10 @@ public class ActionFire : ActionNodeActions
     {
         switch (Unit)
         {
-            case TypeUnit.Soldier:
+            case TypeUnit.Dog:
                 //if(aICharacterAction is ait)
                 break;
-            case TypeUnit.Zombie:
+            case TypeUnit.Sheep:
                 break;
             case TypeUnit.None:
                 break;
