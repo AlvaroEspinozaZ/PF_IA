@@ -9,6 +9,7 @@ public class ActionNode : Action
 {
     protected AICharacterVehicle aICharacterVehicle;
     protected AICharacterAction aICharacterAction;
+    protected Health MyHealth;
     protected TypeUnit Unit;
     public override void OnStart()
     {
@@ -20,11 +21,13 @@ public class ActionNode : Action
             Debug.LogWarning("No load component AICharacterAction");
         if (aICharacterVehicle != null)
         {
-            Unit = this.aICharacterVehicle.Health._Unit;
+            Unit = this.aICharacterVehicle.Health._TypeUnit;
         }
         else
             if (aICharacterAction != null)
-            Unit = this.aICharacterAction.Health._Unit;
+            Unit = this.aICharacterAction.Health._TypeUnit;
+
+        MyHealth = GetComponent<Health>();
         base.OnStart();
     }
 }

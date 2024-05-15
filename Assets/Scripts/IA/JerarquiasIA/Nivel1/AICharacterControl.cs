@@ -10,9 +10,11 @@ public class AICharacterControl : MonoBehaviour
 {
     protected ThirdPersonCharacterAnimatorBase character;
     protected AIEyeBase _AIEye;
+    protected VisionSensor visionSensor;
     protected Health health;
 
     public Health Health { get => health; }
+    public VisionSensor _VisionSensor { get => _VisionSensor; }
 
 
     public SoundCharacter SoundCharacterIA;
@@ -21,6 +23,7 @@ public class AICharacterControl : MonoBehaviour
     {
         character = GetComponent<ThirdPersonCharacterAnimatorBase>();
         _AIEye = GetComponent<AIEyeBase>();
+        visionSensor = GetComponent<VisionSensor>();
         health = GetComponent<Health>();
         SoundCharacterIA = GetComponent<SoundCharacter>();
     }

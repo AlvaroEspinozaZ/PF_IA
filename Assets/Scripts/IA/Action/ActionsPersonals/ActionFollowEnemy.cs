@@ -25,10 +25,14 @@ public class ActionFollowEnemy : ActionNodeVehicle
             case TypeUnit.Soldier:
                 if (aICharacterVehicle is AICharacterVehicleSoldier)
                 {
-                    ((AICharacterVehicleSoldier)aICharacterVehicle).MoveToEnemy();
+                    ((AICharacterVehicleDog)aICharacterVehicle).MoveToEnemy();
                 }
                 break;
-            case TypeUnit.None:
+            case TypeUnit.Wolf:
+                if (aICharacterVehicle is AICharacterWolf)
+                {
+                    ((AICharacterWolf)aICharacterVehicle).MoveToEnemy();
+                }
                 break;
             default:
                 break;
