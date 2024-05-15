@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 481479374}
   - component: {fileID: 481479380}
   m_Layer: 0
-  m_Name: Nuevo
+  m_Name: Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,6 +504,8 @@ MonoBehaviour:
       m_Bits: 0
     InsideObject: 0
   EnemyView: {fileID: 0}
+  AlliedView: {fileID: 0}
+  health: {fileID: 0}
   ScanLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -740,8 +742,8 @@ GameObject:
   - component: {fileID: 2030301659}
   - component: {fileID: 2030301658}
   - component: {fileID: 2030301664}
-  - component: {fileID: 2030301665}
   - component: {fileID: 2030301666}
+  - component: {fileID: 2030301667}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -860,7 +862,25 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2030301665
+--- !u!114 &2030301666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030301657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156075182cba8ae4fbd6963a10b98e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  _TypeUnit: 0
+  typeAgentAllies: 02000000
+  AimOffset: {fileID: 87237102}
+  IfCanView: 1
+--- !u!114 &2030301667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -873,43 +893,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainVision:
-    angle: 30
-    height: 1
-    distance: 0
-    meshSightIn: {r: 1, g: 0, b: 0, a: 1}
+    angle: 68
+    height: 56.52
+    distance: 78.12
+    meshSightIn: {r: 0, g: 1, b: 0, a: 1}
     meshSightOut: {r: 1, g: 0, b: 0, a: 1}
     mesh: {fileID: 0}
     Owner: {fileID: 0}
     InSight: 0
-    IsDrawGizmo: 0
+    IsDrawGizmo: 1
     Occlusionlayers:
       serializedVersion: 2
       m_Bits: 0
     InsideObject: 0
   EnemyView: {fileID: 0}
+  AlliedView: {fileID: 0}
+  health: {fileID: 0}
   ScanLayerMask:
     serializedVersion: 2
     m_Bits: 0
   randomWaitScandMin: 1
   randomWaitScandMax: 1
---- !u!114 &2030301666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030301657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f973a9338b4c994c971003d33af101e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  healthMax: 100
-  _TypeUnit: 0
-  typeAgentAllies: 
-  AimOffset: {fileID: 87237102}
-  IfCanView: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

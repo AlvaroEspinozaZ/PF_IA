@@ -22,13 +22,13 @@ public class ActionGetToy : ActionNodeVehicle
     {
         switch (Unit)
         {
-            case TypeUnit.Soldier:
-                if (aICharacterVehicle is AICharacterVehicleSoldier)
+            case TypeUnit.Dog:
+                if (aICharacterVehicle is AICharacterDog)
                 {
-                    ((AICharacterVehicleSoldier)aICharacterVehicle).MoveToObject();
+                    ((AICharacterDog)aICharacterVehicle).MoveToObject();
                 }
                 break;
-            case TypeUnit.None:
+            case TypeUnit.Wolf:
                 break;
             default:
                 break;

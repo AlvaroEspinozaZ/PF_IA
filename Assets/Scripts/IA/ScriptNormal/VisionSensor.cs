@@ -12,7 +12,7 @@ public class DataViewBase
     public float angle = 30f;
     public float height = 1.0f;
     public float distance = 0f;
-    public Color meshSightIn = Color.red;
+    public Color meshSightIn = Color.green;
     public Color meshSightOut = Color.red;
     public Mesh mesh;
 
@@ -22,7 +22,7 @@ public class DataViewBase
     public bool InSight = false;
     #endregion
     [Header("----- DrawGizmo ----- ")]
-    public bool IsDrawGizmo = false;
+    public bool IsDrawGizmo = true;
 
     [Header("----- Occlusionlayers ----- ")]
     public LayerMask Occlusionlayers;
@@ -78,6 +78,7 @@ public class DataViewBase
     }
     Mesh CreateWedgeMesh()
     {
+        Debug.Log("Creado");
         Mesh mesh = new Mesh();
         int segments = 10;
         int numTriangles = (segments * 4) + 4;
@@ -159,8 +160,9 @@ public class DataViewBase
     }
     public virtual void OnDrawGizmos()
     {
+        Debug.Log("Dibujando");
         if (!IsDrawGizmo) return;
-
+        Debug.Log("Dibujado");
         if (mesh != null && Owner != null)
         {
             if (InSight)
@@ -210,6 +212,7 @@ public class VisionSensor : MonoBehaviour
         LoadComponent();
         Debug.Log("Hola");
     }
+  
     public virtual void LoadComponent()
     {
 
@@ -226,7 +229,10 @@ public class VisionSensor : MonoBehaviour
 
         health = GetComponent<Health>();
     }
-
+    private void Update()
+    {
+        UpdateScand();
+    }
     public virtual void UpdateScand()
     {
 
@@ -243,7 +249,6 @@ public class VisionSensor : MonoBehaviour
     }
     public virtual void Scan()
     {
-        Debug.Log("Scaneando"); 
         EnemyView = null;
         AlliedView = null;
         AlliedView = null;
@@ -279,7 +284,7 @@ public class VisionSensor : MonoBehaviour
 
     public void CreateMesh()
     {
-        Debug.Log("Dibujar");
+        Debug.Log("Pidiendo dibujar");
         MainVision.CreateMesh();
 
     }
@@ -305,8 +310,6 @@ public class VisionSensor : MonoBehaviour
     {
 
         MainVision.OnDrawGizmos();
-
-
         Gizmos.color = Color.red;
         if (EnemyView != null)
         {

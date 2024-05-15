@@ -22,10 +22,10 @@ public class ActionFollowEnemy : ActionNodeVehicle
     {
         switch (Unit)
         {
-            case TypeUnit.Soldier:
-                if (aICharacterVehicle is AICharacterVehicleSoldier)
+            case TypeUnit.Dog:
+                if (aICharacterVehicle is AICharacterDog)
                 {
-                    ((AICharacterVehicleDog)aICharacterVehicle).MoveToEnemy();
+                    ((AICharacterDog)aICharacterVehicle).MoveToEnemy();
                 }
                 break;
             case TypeUnit.Wolf:
