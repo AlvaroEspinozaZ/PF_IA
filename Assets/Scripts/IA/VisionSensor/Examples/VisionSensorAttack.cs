@@ -14,8 +14,9 @@ public class VisionSensorAttack : VisionSensor
     public override void LoadComponent()
     {
 
-        AttackVision.Owner = MainVision.Owner;
+       
         base.LoadComponent();
+        AttackVision.Owner = MainVision.Owner;
     }
 
     // Update is called once per frame
