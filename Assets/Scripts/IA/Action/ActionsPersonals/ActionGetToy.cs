@@ -23,9 +23,9 @@ public class ActionGetToy : ActionNodeVehicle
         switch (Unit)
         {
             case TypeUnit.Dog:
-                if (aICharacterVehicle is AICharacterDog)
+                if (aICharacterVehicle is AIVehicleDog)
                 {
-                    ((AICharacterDog)aICharacterVehicle).MoveToObject();
+                    ((AIVehicleDog)aICharacterVehicle).MoveToObject();
                 }
                 break;
             case TypeUnit.Wolf:

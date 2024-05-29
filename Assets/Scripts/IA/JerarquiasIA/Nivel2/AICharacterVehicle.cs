@@ -12,6 +12,10 @@ public class AICharacterVehicle : AICharacterControl
     }
     #region Move
 
+    public virtual void Wander()
+    {
+
+    }
     public virtual void MoveToPosition(Vector3 position)
     {
        

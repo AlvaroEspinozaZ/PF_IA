@@ -14,7 +14,7 @@ public class AICharacterControl : MonoBehaviour
     protected Health health;
 
     public Health Health { get => health; }
-    public VisionSensor _VisionSensor { get => _VisionSensor; }
+    public VisionSensor _VisionSensor { get => visionSensor; }
 
 
     public SoundCharacter SoundCharacterIA;

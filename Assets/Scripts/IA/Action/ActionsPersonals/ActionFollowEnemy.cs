@@ -23,15 +23,15 @@ public class ActionFollowEnemy : ActionNodeVehicle
         switch (Unit)
         {
             case TypeUnit.Dog:
-                if (aICharacterVehicle is AICharacterDog)
+                if (aICharacterVehicle is AIVehicleDog)
                 {
-                    ((AICharacterDog)aICharacterVehicle).MoveToEnemy();
+                    ((AIVehicleDog)aICharacterVehicle).MoveToEnemy();
                 }
                 break;
             case TypeUnit.Wolf:
-                if (aICharacterVehicle is AICharacterWolf)
+                if (aICharacterVehicle is AIVehicleWolf)
                 {
-                    ((AICharacterWolf)aICharacterVehicle).MoveToEnemy();
+                    ((AIVehicleWolf)aICharacterVehicle).MoveToEnemy();
                 }
                 break;
             default:
