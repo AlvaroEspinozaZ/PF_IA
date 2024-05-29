@@ -9,7 +9,6 @@ using BehaviorDesigner.Runtime;
 public class AICharacterControl : MonoBehaviour
 {
     protected ThirdPersonCharacterAnimatorBase character;
-    protected AIEyeBase _AIEye;
     protected VisionSensor visionSensor;
     protected Health health;
 
@@ -22,7 +21,6 @@ public class AICharacterControl : MonoBehaviour
     public virtual void LoadComponent()
     {
         character = GetComponent<ThirdPersonCharacterAnimatorBase>();
-        _AIEye = GetComponent<AIEyeBase>();
         visionSensor = GetComponent<VisionSensor>();
         health = GetComponent<Health>();
         SoundCharacterIA = GetComponent<SoundCharacter>();

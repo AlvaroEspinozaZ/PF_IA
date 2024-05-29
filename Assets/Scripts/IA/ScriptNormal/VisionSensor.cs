@@ -78,7 +78,7 @@ public class DataViewBase
     }
     Mesh CreateWedgeMesh()
     {
-        Debug.Log("Creado");
+
         Mesh mesh = new Mesh();
         int segments = 10;
         int numTriangles = (segments * 4) + 4;
@@ -160,9 +160,7 @@ public class DataViewBase
     }
     public virtual void OnDrawGizmos()
     {
-        Debug.Log("Dibujando");
         if (!IsDrawGizmo) return;
-        Debug.Log("Dibujado");
         if (mesh != null && Owner != null)
         {
             if (InSight)
@@ -210,7 +208,6 @@ public class VisionSensor : MonoBehaviour
     private void Start()
     {
         LoadComponent();
-        Debug.Log("Hola");
     }
   
     public virtual void LoadComponent()
@@ -284,7 +281,7 @@ public class VisionSensor : MonoBehaviour
 
     public void CreateMesh()
     {
-        Debug.Log("Pidiendo dibujar");
+
         MainVision.CreateMesh();
 
     }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("IA SC/Node View")]
-public class ActionViewEnemy : ActionView
+
+public class ActionNoViewAllied : ActionView
 {
     public override void OnStart()
     {
@@ -21,7 +22,7 @@ public class ActionViewEnemy : ActionView
 
         if (aICharacterVehicle != null)
         {
-            if (aICharacterVehicle._VisionSensor.EnemyView != null)
+            if (aICharacterVehicle._VisionSensor.AlliedView == null)
             {
                 return TaskStatus.Success;
             }
@@ -29,7 +30,7 @@ public class ActionViewEnemy : ActionView
 
         if (aICharacterAction != null)
         {
-            if (aICharacterAction._VisionSensor.EnemyView != null)
+            if (aICharacterAction._VisionSensor.AlliedView == null)
             {
                 return TaskStatus.Success;
             }
