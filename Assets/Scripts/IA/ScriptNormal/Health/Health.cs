@@ -21,4 +21,13 @@ public class Health : MonoBehaviour
     {
         health = healthMax;
     }
+    public virtual void Death()
+    {
+        if (IsDead)
+        {
+            //animacion muerte;
+            Destroy(gameObject, 1.2f);
+        }
+    }
+    
 }

@@ -61,12 +61,38 @@ public class AICharacterVehicleLand : AICharacterVehicle
             }
         }
         else
-        {
+        { 
             if (Framerate > arrayRate[index])
             {
                 index++;
                 index = index % arrayRate.Length;
                 if (RandomPoint(transform.position, rangeWander, out pointWander))
+                {
+                    this.MoveToPosition(pointWander);
+                }
+                Framerate = 0;
+            }
+            Framerate += Time.deltaTime;
+        }
+    }
+    public void Patrol(Transform aliedToSave)
+    {
+
+        float distance = (transform.position - pointWander).magnitude;
+        if (distance < 1)
+        {
+            if (RandomPoint(aliedToSave.position, rangeWander, out pointWander))
+            {
+                this.MoveToPosition(pointWander);
+            }
+        }
+        else
+        {
+            if (Framerate > arrayRate[index])
+            {
+                index++;
+                index = index % arrayRate.Length;
+                if (RandomPoint(aliedToSave.position, rangeWander, out pointWander))
                 {
                     this.MoveToPosition(pointWander);
                 }

@@ -12,5 +12,9 @@ public class HealthDog : Health
     {
         base.LoadComponent();
     }
+    public override void Death()
+    {
+        base.Death();
+    }
 }
 
