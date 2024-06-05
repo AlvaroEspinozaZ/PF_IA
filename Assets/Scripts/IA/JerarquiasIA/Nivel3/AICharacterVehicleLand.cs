@@ -38,20 +38,39 @@ public class AICharacterVehicleLand : AICharacterVehicle
         }
         else if (_VisionSensor.EnemyView != null)
         {
-            Debug.Log("moviendo enemigo");
             MoveToPosition(_VisionSensor.EnemyView.transform.position);
         }
     }
-    //public override void MoveToObject()
-    //{
-    //    if (_AIEye.ViewToy != null)
-    //    {
-    //        MoveToPosition(_AIEye.ViewToy.transform.position);
-    //    }
-    //}
+    public override void MoveToObject()
+    {
+        if (_VisionSensor.ResourceView != null)
+        {
+            MoveToPosition(_VisionSensor.ResourceView.transform.position);
+        }
+    }
+
+    public override void Evade()
+    {
+        if(_VisionSensor.EnemyView == null)
+        {
+            Debug.Log("No hay enemigo");
+            return;
+        }
+        else if(_VisionSensor.EnemyView != null)
+        {
+            agent.speed = 10.0f;
+            Vector3 evasionDirection = transform.position - _VisionSensor.EnemyView.transform.position;
+            evasionDirection.Normalize();
+            Vector3 evasionDestination = transform.position + evasionDirection * _VisionSensor.MainVision.distance;
+            Debug.Log("Evadiendo: " + evasionDestination);
+            this.MoveToPosition(evasionDestination);
+  
+        }
+        
+    }
     public override void Wander()
     {
-      
+        agent.speed = 3.5f;
         float distance = (transform.position - pointWander).magnitude;
         if (distance < 1)
         {

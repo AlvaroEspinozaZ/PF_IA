@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("IA SC/Node Move")]
-public class ActionGetToy : ActionNodeVehicle
+
+public class ActionEvadeEnemy : ActionNodeVehicle
 {
     public override void OnStart()
     {
@@ -13,19 +14,18 @@ public class ActionGetToy : ActionNodeVehicle
     {
         if (aICharacterVehicle.Health.IsDead)
             return TaskStatus.Failure;
-        SwitchMoveToToy();
+        SwitchEvade();
         return TaskStatus.Success;
 
     }
-
-    void SwitchMoveToToy()
+    void SwitchEvade()
     {
         switch (Unit)
         {
             case TypeUnit.Sheep:
                 if (aICharacterVehicle is AIVehicleSheep)
                 {
-                    ((AIVehicleSheep)aICharacterVehicle).MoveToObject();
+                    ((AIVehicleSheep)aICharacterVehicle).Evade();
                 }
                 break;
             default:

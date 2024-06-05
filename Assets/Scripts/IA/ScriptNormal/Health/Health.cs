@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TypeUnit { Dog, Wolf, Sheep }
+public enum TypeUnit { Dog, Wolf, Sheep, Resource }
 public class Health : MonoBehaviour
 {
 
