@@ -40,10 +40,10 @@ public class ActionFire : ActionNodeActions
                 break;
             case TypeUnit.Sheep:
                 //Cambiar por comida del la oveja
-                if (aICharacterAction._VisionSensor.EnemyView)
+                if (aICharacterAction._VisionSensor.ResourceView)
                 {
-                    Atacar(intervaloAtaque, aICharacterAction._VisionSensor.EnemyView);
-                    aICharacterAction._VisionSensor.EnemyView.Death();
+                    Atacar(intervaloAtaque, aICharacterAction._VisionSensor.ResourceView);
+                    aICharacterAction._VisionSensor.ResourceView.Death();
                 }
                 break;
             default:
