@@ -37,7 +37,7 @@ public class AICharacterVehicle : AICharacterControl
     {
        
     }
-    public virtual void MoveToPositionEvade()
+    public virtual void Evade()
     {
 
     }

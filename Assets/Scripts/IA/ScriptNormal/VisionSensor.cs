@@ -184,6 +184,8 @@ public class VisionSensor : MonoBehaviour
     public Health EnemyView;
     [Header("Allied View")]
     public Health AlliedView;
+    [Header("Allied View")]
+    public Health ResourceView;
 
 
     [Header("Onwer Health")]
@@ -248,7 +250,7 @@ public class VisionSensor : MonoBehaviour
     {
         EnemyView = null;
         AlliedView = null;
-        AlliedView = null;
+        ResourceView = null;
         MainVision.InSight = false;
 
 
@@ -265,14 +267,20 @@ public class VisionSensor : MonoBehaviour
                 MainVision.IsInSight(health.AimOffset)
                 )
             {
-
-
-                if (!IsAllies(health))
+                if(health._TypeUnit == TypeUnit.Resource)
                 {
-                    EnemyView = health;
+                    ResourceView = health;
                 }
                 else
-                    AlliedView = health;
+                {
+                    if (!IsAllies(health))
+                    {
+                        EnemyView = health;
+                    }
+                    else
+                        AlliedView = health;
+
+                }
 
 
             }

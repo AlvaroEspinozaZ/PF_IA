@@ -35,6 +35,12 @@ public class ActionWander : ActionNode
                     ((AIVehicleWolf)aICharacterVehicle).Wander();
                 }
                 break;
+            case TypeUnit.Sheep:
+                if(aICharacterVehicle is AIVehicleSheep)
+                {
+                    ((AIVehicleSheep)aICharacterVehicle).Wander();
+                }
+                break;
             default:
                 break;
         }
