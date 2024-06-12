@@ -287,6 +287,7 @@ public class VisionSensor : MonoBehaviour
                     ExtractViewItem(ref min_distItem, ScanItem);
                 }
 
+
             }
         }
     }
