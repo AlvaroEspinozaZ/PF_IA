@@ -185,6 +185,7 @@ public class VisionSensor : MonoBehaviour
     public Health EnemyView;
     [Header("Allied View")]
     public Health AlliedView;
+    public List<Health> listAlliedView = new List<Health>();
     [Header("ItemView")]
     public Item ScanItem;
 
@@ -256,6 +257,7 @@ public class VisionSensor : MonoBehaviour
         AlliedView = null;
         ScanItem = null;
         MainVision.InSight = false;
+        listAlliedView.Clear();
 
         float min_distEnemy = 10000000000f;
         float min_distItem = 10000000000f;
@@ -278,6 +280,7 @@ public class VisionSensor : MonoBehaviour
                     MainVision.IsInSight(Scanhealth.AimOffset))
                 {
                     ExtractViewEnemy(ref min_distEnemy, Scanhealth);
+                   
                 }
 
                 Item ScanItem = obj.GetComponent<Item>();
@@ -302,14 +305,20 @@ public class VisionSensor : MonoBehaviour
                 EnemyView = Scanhealth;
             }
             else
+            {
                 AlliedView = Scanhealth;
+                listAlliedView.Add(AlliedView);
+            }
+
         }
+      
+    
         min_dist = dist;
+         
     }
 
     public void ExtractViewItem(ref float min_dist, Item Scanitem)
     {
-        Debug.Log("Buscando item");
         float dist = (transform.position - Scanitem.transform.position).magnitude;
         if (min_dist > dist)
         {
@@ -317,7 +326,20 @@ public class VisionSensor : MonoBehaviour
         }
         min_dist = dist;
     }
+    public void ExtractViewAlied(ref float min_dist, Health ScanAlied)
+    {      
+        float dist = (transform.position - ScanAlied.transform.position).magnitude;
+        if (min_dist > dist)
+        {
+            if (IsAllies(ScanAlied))
+            {
+                AlliedView = ScanAlied;
+               
+            }
 
+        }
+        min_dist = dist;
+    }
     public void CreateMesh()
     {
 

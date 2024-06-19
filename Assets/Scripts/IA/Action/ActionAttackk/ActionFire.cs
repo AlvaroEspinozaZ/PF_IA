@@ -7,6 +7,7 @@ public class ActionFire : ActionNodeActions
 {
     private float tiempoUltimoAtaque;
     public float intervaloAtaque = 1.5f;
+    public int damage;
     public override void OnStart()
     {
         base.OnStart();
@@ -25,16 +26,17 @@ public class ActionFire : ActionNodeActions
         switch (Unit)
         {
             case TypeUnit.Dog:
+               
                 if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
-                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque,  aICharacterAction._VisionSensor.EnemyView);
+                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count),  aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;
             case TypeUnit.Wolf:
                 if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
-                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, aICharacterAction._VisionSensor.EnemyView);
+                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count), aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;
@@ -50,7 +52,51 @@ public class ActionFire : ActionNodeActions
                 break;
         }
     }
+    // Función para calcular el daño difuso en función de la cantidad de aliados
+    float CalcularDanioDifuso(int cantidadAliados)
+    {
+        // Calculamos las membresías
+        float membershipPocos = CalcularMembresiaPocos(cantidadAliados);
+        float membershipModerados = CalcularMembresiaModerados(cantidadAliados);
+        float membershipMuchos = CalcularMembresiaMuchos(cantidadAliados);
 
-   
+        // Definimos los valores base de daño
+        float minDamage = 5.0f; // Daño mínimo cuando hay "pocos" aliados
+        float maxDamage = 15.0f; // Daño máximo cuando hay "muchos" aliados
+
+        // Interpolación difusa para determinar el daño
+        float damage = membershipPocos * minDamage + membershipModerados * (maxDamage - minDamage) + membershipMuchos * maxDamage;
+
+        // Aseguramos que el daño mínimo sea 5 cuando no hay aliados
+        damage = Mathf.Max(damage, 5.0f);
+
+        return damage;
+    }
+
+    float CalcularMembresiaPocos(int cantidadAliados)
+    {
+        int thresholdPocos = 1; // Umbral para considerar "pocos" aliados
+        float membership = Mathf.Clamp01(1.0f - Mathf.Abs(cantidadAliados - thresholdPocos) / thresholdPocos);
+        return Mathf.Max(membership, cantidadAliados == 0 ? 1.0f : 0.0f); // Si no hay aliados, asegura que el mínimo sea 5
+    }
+
+    float CalcularMembresiaModerados(int cantidadAliados)
+    {
+        int thresholdPocos = 2; // Umbral para considerar "pocos" aliados
+        int thresholdModerados = 3; // Umbral para considerar "moderados" aliados
+        float membership = Mathf.Clamp01(Mathf.Max(0.0f, (cantidadAliados - thresholdPocos) / (thresholdModerados - thresholdPocos)));
+        return Mathf.Max(membership, cantidadAliados == 0 ? 0.0f : 0.0f); // Si no hay aliados, asegura que el mínimo sea 5
+    }
+
+    float CalcularMembresiaMuchos(int cantidadAliados)
+    {
+        int thresholdModerados = 3; // Umbral para considerar "moderados" aliados
+        float membership = Mathf.Clamp01(Mathf.Max(0.0f, (cantidadAliados - thresholdModerados) / thresholdModerados));
+        return Mathf.Max(membership, cantidadAliados == 0 ? 0.0f : 0.0f); // Si no hay aliados, asegura que el mínimo sea 5
+    }
+
+
+
+
 
 }

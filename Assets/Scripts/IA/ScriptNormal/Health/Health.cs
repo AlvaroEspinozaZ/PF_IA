@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum TypeUnit { Dog, Wolf, Sheep, Resource }
 public class Health : MonoBehaviour
 {
 
-    public int health = 0;
-    public int armature = 0;
-    public int healthMax = 100;
+    public float health = 0;
+    public float armature = 0;
+    public float healthMax = 100;
     private float tiempoUltimoAtaque;
 
     public TypeUnit _TypeUnit;
@@ -16,11 +17,16 @@ public class Health : MonoBehaviour
 
     public Transform AimOffset;
 
+    public Slider healthBar;
     public bool IfCanView = true;
     public bool IsDead { get => health+ armature <= 0; }
     public virtual void LoadComponent()
     {
         health = healthMax;
+    }
+    public virtual void UpdabeHEalthBar()
+    {
+        healthBar.value = (health / healthMax);
     }
     public virtual void Death()
     {
@@ -42,13 +48,14 @@ public class Health : MonoBehaviour
             }
         }
     }
-    public virtual void Atacar(float timeToAttack,Health enemy)
-    {       
+    public virtual void Atacar(float timeToAttack,float damage,Health enemy)
+    {
+        
         if ((Time.time - tiempoUltimoAtaque) % (timeToAttack + 1) >= timeToAttack)
         {
             if (enemy.armature>= 0)
             {
-                enemy.armature -= 10;
+                enemy.armature -= damage;
             }           
             else if(enemy.armature <= 0)
             {
@@ -56,11 +63,13 @@ public class Health : MonoBehaviour
             }
             if (enemy.armature <= 0)
             {
-                enemy.health -= 10;
+                enemy.health -= damage;
+                UpdabeHEalthBar();
             }
-            Debug.Log(10 + " ---" + enemy);
+            Debug.Log(damage + " ---" + enemy);
 
             tiempoUltimoAtaque = Time.time;
         }
     }
+   
 }
