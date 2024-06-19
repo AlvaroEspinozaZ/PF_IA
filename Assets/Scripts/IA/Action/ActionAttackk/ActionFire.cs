@@ -25,16 +25,16 @@ public class ActionFire : ActionNodeActions
         switch (Unit)
         {
             case TypeUnit.Dog:
-                if (aICharacterAction._VisionSensor.EnemyView)
+                if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
-                    Atacar(intervaloAtaque, aICharacterAction._VisionSensor.EnemyView);
+                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque,  aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;
             case TypeUnit.Wolf:
-                if (aICharacterAction._VisionSensor.EnemyView)
+                if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
-                    Atacar(intervaloAtaque, aICharacterAction._VisionSensor.EnemyView);
+                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;
@@ -50,18 +50,7 @@ public class ActionFire : ActionNodeActions
                 break;
         }
     }
-    void Atacar(float timeToAttack,Health enemy)
-    {
-        if ((Time.time - tiempoUltimoAtaque)% (timeToAttack+1) >= timeToAttack) 
-        {
-            enemy.armature -= 10;
-            if (enemy.armature <= 0)
-            {
-                enemy.health -= 10;
-            }
-            tiempoUltimoAtaque = Time.time;
-        }
-    }
+
    
 
 }

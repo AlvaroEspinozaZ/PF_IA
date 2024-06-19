@@ -8,10 +8,10 @@ public class Pasto : Item
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Choque con algo");
+        //Debug.Log("Choque con algo");
         if (other.CompareTag("Sheep")) // Verificar si el objeto que ha colisionado es el jugador
         {
-            Debug.Log("Choque con la oveja");
+            //Debug.Log("Choque con la oveja");
             HealthSheep sheepHealth = other.GetComponent<HealthSheep>(); // Obtener el componente de salud del jugador
             if (sheepHealth != null)
             {

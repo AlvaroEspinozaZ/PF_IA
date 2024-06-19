@@ -16,5 +16,9 @@ public class HealthDog : Health
     {
         base.Death();
     }
+    public override void Atacar(float timeToAttack, Health enemy)
+    {
+        base.Atacar(timeToAttack,  enemy);
+    }
 }
 

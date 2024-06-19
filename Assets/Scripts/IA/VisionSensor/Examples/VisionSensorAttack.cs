@@ -6,6 +6,7 @@ public class VisionSensorAttack : VisionSensor
 {
     [Header("Vision Attack")]
     public DataViewBase AttackVision = new DataViewBase();
+    public Health alcanceAttack; 
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,6 +32,7 @@ public class VisionSensorAttack : VisionSensor
     }
     public override void UpdateScand()
     {
+        
         if (Framerate > arrayRate[index])
         {
             index++;
@@ -44,9 +46,13 @@ public class VisionSensorAttack : VisionSensor
         if (EnemyView != null)
         {
             AttackVision.IsInSight(EnemyView.AimOffset);
+            //Debug.Log("Alcance attacl "+ EnemyView);
+            alcanceAttack = EnemyView;
         }
         else
             AttackVision.InSight = false;
+            alcanceAttack = null;
+
     }
     private void OnDrawGizmos()
     {

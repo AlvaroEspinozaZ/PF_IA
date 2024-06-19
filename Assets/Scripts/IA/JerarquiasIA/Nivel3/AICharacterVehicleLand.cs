@@ -58,15 +58,41 @@ public class AICharacterVehicleLand : AICharacterVehicle
         }
         else if(_VisionSensor.EnemyView != null)
         {
-            agent.speed = 10.0f;
             Vector3 evasionDirection = transform.position - _VisionSensor.EnemyView.transform.position;
+
+            float closeMembership = CalcularMembresiaCerca(evasionDirection.magnitude);
+            float mediumMembership = CalcularMembresiaMediana(evasionDirection.magnitude);
+            float farMembership = CalcularMembresiaLejos(evasionDirection.magnitude);
+            float maxSpeed = 10.0f; 
+            float minSpeed = 3.0f; 
+            float speed = closeMembership * maxSpeed + mediumMembership * (maxSpeed - minSpeed) + farMembership * minSpeed;
+
+            agent.speed = speed;
             evasionDirection.Normalize();
             Vector3 evasionDestination = transform.position + evasionDirection * _VisionSensor.MainVision.distance;
-            Debug.Log("Evadiendo: " + evasionDestination);
+            //Debug.Log("Evadiendo: " + evasionDestination);
             this.MoveToPosition(evasionDestination);
   
         }
         
+    }
+    float CalcularMembresiaCerca(float distance)
+    {
+        float closeThreshold = 5.0f; // Umbral para estar "cerca"
+        return Mathf.Clamp01(1.0f - Mathf.Abs(distance - closeThreshold) / closeThreshold);
+    }
+
+    float CalcularMembresiaMediana(float distance)
+    {
+        float closeThreshold = 5.0f; // Umbral para estar "cerca"
+        float mediumThreshold = 15.0f; // Umbral para estar "medio"
+        return Mathf.Clamp01(Mathf.Max(0.0f, (distance - closeThreshold) / (mediumThreshold - closeThreshold)));
+    }
+
+    float CalcularMembresiaLejos(float distance)
+    {
+        float mediumThreshold = 15.0f; // Umbral para estar "medio"
+        return Mathf.Clamp01(Mathf.Max(0.0f, (distance - mediumThreshold) / mediumThreshold));
     }
     public override void Wander()
     {

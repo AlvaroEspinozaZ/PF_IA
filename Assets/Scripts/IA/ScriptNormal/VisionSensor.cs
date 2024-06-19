@@ -293,7 +293,7 @@ public class VisionSensor : MonoBehaviour
     }
     public void ExtractViewEnemy(ref float min_dist, Health Scanhealth)
     {
-        Debug.Log(Scanhealth.gameObject);
+        //Debug.Log(Scanhealth.gameObject);
         float dist = (transform.position - Scanhealth.transform.position).magnitude;
         if (min_dist > dist)
         {
