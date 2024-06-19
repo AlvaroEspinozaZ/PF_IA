@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 [System.Serializable]
 public class DataViewBase
 {
@@ -184,8 +185,11 @@ public class VisionSensor : MonoBehaviour
     public Health EnemyView;
     [Header("Allied View")]
     public Health AlliedView;
-    [Header("Allied View")]
-    public Health ResourceView;
+    [Header("ItemView")]
+    public Item ScanItem;
+
+
+
 
 
     [Header("Onwer Health")]
@@ -250,41 +254,68 @@ public class VisionSensor : MonoBehaviour
     {
         EnemyView = null;
         AlliedView = null;
-        ResourceView = null;
+        ScanItem = null;
         MainVision.InSight = false;
+
+        float min_distEnemy = 10000000000f;
+        float min_distItem = 10000000000f;
 
 
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, MainVision.distance, ScanLayerMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
-            Health health = targetsInViewRadius[i].GetComponent<Health>();
+            GameObject obj = targetsInViewRadius[i].gameObject;
 
-            if (health != null &&
-                IsNotIsThis(health.gameObject) &&
-                !health.IsDead &&
-                health.IfCanView &&
-                MainVision.IsInSight(health.AimOffset)
-                )
+            if (this.IsNotIsThis(obj))
             {
-                if(health._TypeUnit == TypeUnit.Resource)
-                {
-                    ResourceView = health;
-                }
-                else
-                {
-                    if (!IsAllies(health))
-                    {
-                        EnemyView = health;
-                    }
-                    else
-                        AlliedView = health;
 
+                Health Scanhealth = obj.GetComponent<Health>();
+
+                if (Scanhealth != null &&
+                    obj.activeSelf &&
+                    !Scanhealth.IsDead &&
+                    MainVision.IsInSight(Scanhealth.AimOffset))
+                {
+                    ExtractViewEnemy(ref min_distEnemy, Scanhealth);
+                }
+
+                Item ScanItem = obj.GetComponent<Item>();
+
+                if (ScanItem != null && MainVision.IsInSight(ScanItem.transform))
+                {
+                    ExtractViewItem(ref min_distItem, ScanItem);
                 }
 
 
             }
         }
+    }
+    public void ExtractViewEnemy(ref float min_dist, Health Scanhealth)
+    {
+        Debug.Log(Scanhealth.gameObject);
+        float dist = (transform.position - Scanhealth.transform.position).magnitude;
+        if (min_dist > dist)
+        {
+            if (!IsAllies(Scanhealth))
+            {
+                EnemyView = Scanhealth;
+            }
+            else
+                AlliedView = Scanhealth;
+        }
+        min_dist = dist;
+    }
+
+    public void ExtractViewItem(ref float min_dist, Item Scanitem)
+    {
+        Debug.Log("Buscando item");
+        float dist = (transform.position - Scanitem.transform.position).magnitude;
+        if (min_dist > dist)
+        {
+            ScanItem = Scanitem;
+        }
+        min_dist = dist;
     }
 
     public void CreateMesh()

@@ -43,9 +43,9 @@ public class AICharacterVehicleLand : AICharacterVehicle
     }
     public override void MoveToObject()
     {
-        if (_VisionSensor.ResourceView != null)
+        if (_VisionSensor.ScanItem != null)
         {
-            MoveToPosition(_VisionSensor.ResourceView.transform.position);
+            MoveToPosition(_VisionSensor.ScanItem.transform.position);
         }
     }
 

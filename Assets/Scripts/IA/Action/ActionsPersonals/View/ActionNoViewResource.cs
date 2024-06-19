@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("IA SC/Node View")]
-public class ActionViewResource : ActionView
+
+public class ActionNoViewResource : ActionView
 {
     public override void OnStart()
     {
@@ -21,7 +22,7 @@ public class ActionViewResource : ActionView
 
         if (aICharacterVehicle != null)
         {
-            if (aICharacterVehicle._VisionSensor.ScanItem != null)
+            if (aICharacterVehicle._VisionSensor.ScanItem == null)
             {
                 return TaskStatus.Success;
             }
@@ -29,7 +30,7 @@ public class ActionViewResource : ActionView
 
         if (aICharacterAction != null)
         {
-            if (aICharacterAction._VisionSensor.ScanItem != null)
+            if (aICharacterAction._VisionSensor.ScanItem == null)
             {
                 return TaskStatus.Success;
             }

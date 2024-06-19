@@ -28,6 +28,12 @@ public class ActionGetToy : ActionNodeVehicle
                     ((AIVehicleSheep)aICharacterVehicle).MoveToObject();
                 }
                 break;
+            case TypeUnit.Dog:
+                if (aICharacterVehicle is AIVehicleDog)
+                {
+                    ((AIVehicleDog)aICharacterVehicle).MoveToObject();
+                }
+                break;
             default:
                 break;
         }

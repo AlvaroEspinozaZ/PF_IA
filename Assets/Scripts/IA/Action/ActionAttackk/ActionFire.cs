@@ -38,14 +38,14 @@ public class ActionFire : ActionNodeActions
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;
-            case TypeUnit.Sheep:
-                //Cambiar por comida del la oveja
-                if (aICharacterAction._VisionSensor.ResourceView)
-                {
-                    Atacar(intervaloAtaque, aICharacterAction._VisionSensor.ResourceView);
-                    aICharacterAction._VisionSensor.ResourceView.Death();
-                }
-                break;
+            //case TypeUnit.Sheep:
+            //    //Cambiar por comida del la oveja
+            //    if (aICharacterAction._VisionSensor.ResourceView)
+            //    {
+            //        Atacar(intervaloAtaque, aICharacterAction._VisionSensor.ResourceView);
+            //        aICharacterAction._VisionSensor.ResourceView.Death();
+            //    }
+            //    break;
             default:
                 break;
         }
@@ -53,8 +53,12 @@ public class ActionFire : ActionNodeActions
     void Atacar(float timeToAttack,Health enemy)
     {
         if ((Time.time - tiempoUltimoAtaque)% (timeToAttack+1) >= timeToAttack) 
-        { 
-            enemy.health -= 10;
+        {
+            enemy.armature -= 10;
+            if (enemy.armature <= 0)
+            {
+                enemy.health -= 10;
+            }
             tiempoUltimoAtaque = Time.time;
         }
     }
