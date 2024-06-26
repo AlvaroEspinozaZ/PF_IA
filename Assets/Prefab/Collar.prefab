@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8683437460097658703}
   - component: {fileID: 1584828242832872104}
   - component: {fileID: 3088007345488348882}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Collar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 6951596446722379128, guid: 7ae6578e46ce43e4f9eb356f249f4361, type: 3}
       propertyPath: m_Name
       value: collar 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951596446722379128, guid: 7ae6578e46ce43e4f9eb356f249f4361, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

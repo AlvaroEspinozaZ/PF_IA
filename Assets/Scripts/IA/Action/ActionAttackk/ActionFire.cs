@@ -29,6 +29,7 @@ public class ActionFire : ActionNodeActions
                
                 if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
+                    transform.LookAt(aICharacterAction._VisionSensor.EnemyView.transform);
                     aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count),  aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
@@ -36,6 +37,7 @@ public class ActionFire : ActionNodeActions
             case TypeUnit.Wolf:
                 if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
+                    transform.LookAt(aICharacterAction._VisionSensor.EnemyView.transform);
                     aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count), aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }

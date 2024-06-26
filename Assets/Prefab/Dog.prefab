@@ -329,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 5308761445023681186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.53, z: 0.44}
+  m_LocalPosition: {x: 0, y: -0.159, z: 0.743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -507,9 +507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156075182cba8ae4fbd6963a10b98e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 0
   armature: 0
-  healthMax: 100
+  healthMax: 30
   _TypeUnit: 0
   typeAgentAllies: 0200000000000000
   AimOffset: {fileID: 62290439329864092}
@@ -531,8 +531,8 @@ MonoBehaviour:
     angle: 180
     height: 1
     distance: 15
-    meshSightIn: {r: 0, g: 1, b: 0, a: 0.56078434}
-    meshSightOut: {r: 1, g: 0, b: 0, a: 0.6117647}
+    meshSightIn: {r: 0, g: 1, b: 0, a: 0.039215688}
+    meshSightOut: {r: 1, g: 0, b: 0, a: 0.039215688}
     mesh: {fileID: 0}
     Owner: {fileID: 0}
     InSight: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   randomWaitScandMin: 1
   randomWaitScandMax: 1
   AttackVision:
-    angle: 30
+    angle: 35
     height: 1
     distance: 5
     meshSightIn: {r: 0.11748028, g: 0, b: 1, a: 0.54509807}

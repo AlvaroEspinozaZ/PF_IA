@@ -7,10 +7,10 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] List<Transform> spawnPoints; 
     [SerializeField] List<GameObject> items;
     public int quantity;
+    public float times=6f;
     private void Start()
     {
-        
-        SpawnItems();
+        StartCoroutine(SpawnTime());
     }
     private void Update()
     {
@@ -70,5 +70,12 @@ public class ItemSpawner : MonoBehaviour
         {
             return null;
         }
+    }
+
+    IEnumerator SpawnTime()
+    {
+        SpawnItems();
+        yield return new WaitForSecondsRealtime(times);
+        StartCoroutine(SpawnTime());
     }
 }

@@ -320,9 +320,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   armature: 0
-  healthMax: 100
+  healthMax: 15
   _TypeUnit: 2
-  typeAgentAllies: 00000000
+  typeAgentAllies: 0000000002000000
   AimOffset: {fileID: 4398745120382721397}
   healthBar: {fileID: 2653855403749456753}
   IfCanView: 1

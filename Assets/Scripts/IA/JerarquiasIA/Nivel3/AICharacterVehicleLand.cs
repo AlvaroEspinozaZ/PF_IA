@@ -24,6 +24,7 @@ public class AICharacterVehicleLand : AICharacterVehicle
     }
     public override void MoveToAllied()
     {
+        agent.stoppingDistance = 1;
         if (_VisionSensor.AlliedView != null)
         {
             MoveToPosition(_VisionSensor.AlliedView.transform.position);
@@ -31,6 +32,7 @@ public class AICharacterVehicleLand : AICharacterVehicle
     }
     public override void MoveToEnemy()
     {
+        agent.stoppingDistance = 3;
         if (_VisionSensor.EnemyView == null)
         {
             Debug.Log("no enemigo");
@@ -43,6 +45,7 @@ public class AICharacterVehicleLand : AICharacterVehicle
     }
     public override void MoveToObject()
     {
+        agent.stoppingDistance = 0;
         if (_VisionSensor.ScanItem != null)
         {
             MoveToPosition(_VisionSensor.ScanItem.transform.position);
@@ -96,6 +99,7 @@ public class AICharacterVehicleLand : AICharacterVehicle
     }
     public override void Wander()
     {
+        agent.stoppingDistance = 0;
         agent.speed = 3.5f;
         float distance = (transform.position - pointWander).magnitude;
         if (distance < 1)
