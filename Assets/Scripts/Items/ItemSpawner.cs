@@ -5,14 +5,17 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] List<Transform> spawnPoints; 
-    [SerializeField] List<Item> items;
+    [SerializeField] List<GameObject> items;
     public int quantity;
     private void Start()
     {
         
         SpawnItems();
     }
-
+    private void Update()
+    {
+        
+    }
     private void SpawnItems()
     {
         // Verificar si la cantidad de ítems a instanciar es mayor que la cantidad de puntos de spawn disponibles
@@ -21,7 +24,7 @@ public class ItemSpawner : MonoBehaviour
         for (int i = 0; i < itemsToSpawn; i++)
         {
             // Seleccionar un ítem aleatorio de la lista de ítems
-            Item item = items[Random.Range(0, items.Count)];
+            GameObject item = items[Random.Range(0, items.Count)];
 
             // Seleccionar un punto de spawn aleatorio que no esté ocupado por otro ítem
             Transform spawnPoint = GetRandomSpawnPoint();
