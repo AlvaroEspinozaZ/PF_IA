@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
 
     public float health = 0;
     public float armature = 0;
+    public float armatureMax = 50;
     public float healthMax = 100;
     private float tiempoUltimoAtaque;
 
@@ -18,8 +19,9 @@ public class Health : MonoBehaviour
     public Transform AimOffset;
 
     public Slider healthBar;
+    public Slider ArmatureBar;
     public bool IfCanView = true;
-    public bool IsDead { get => health+ armature <= 0; }
+    public bool IsDead { get => health + armature <= 0; }
     public virtual void LoadComponent()
     {
         health = healthMax;
@@ -27,6 +29,18 @@ public class Health : MonoBehaviour
     public virtual void UpdabeHEalthBar()
     {
         healthBar.value = (health / healthMax);
+    }
+    public virtual void UpdateArmatureBar()
+    {
+        ArmatureBar.value = armature / armatureMax;
+        if (ArmatureBar.value <= 0)
+        {
+            ArmatureBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            ArmatureBar.gameObject.SetActive(true);
+        }
     }
     public virtual void Death()
     {
@@ -56,6 +70,7 @@ public class Health : MonoBehaviour
             if (enemy.armature>= 0)
             {
                 enemy.armature -= damage;
+                UpdateArmatureBar();
             }           
             else if(enemy.armature <= 0)
             {
