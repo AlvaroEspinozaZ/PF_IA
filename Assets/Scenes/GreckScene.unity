@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03eaa90f18a124fbae12e1daef0bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  mouseSensitivity: 2
+  movementSpeed: 20
+  mouseSensitivity: 5
 --- !u!1 &111844027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,8 +3672,8 @@ MonoBehaviour:
   - {fileID: 5822170272805620961, guid: d12dd1263d395f043b2fa6755bfdee8a, type: 3}
   - {fileID: 3289045737570305522, guid: b0188ff8864be1c4eae751dc0add0f8a, type: 3}
   - {fileID: 2199986677904451418, guid: a048739772747ee4a8d078d5fa0ca42b, type: 3}
-  quantity: 4
-  range: 3
+  quantity: 7
+  range: 4
   spawnPoints:
   - {fileID: 1666845046}
   - {fileID: 1743175771}

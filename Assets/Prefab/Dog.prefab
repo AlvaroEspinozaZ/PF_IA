@@ -552,7 +552,7 @@ MonoBehaviour:
   randomWaitScandMin: 1
   randomWaitScandMax: 1
   AttackVision:
-    angle: 35
+    angle: 50
     height: 1
     distance: 5
     meshSightIn: {r: 0.11748028, g: 0, b: 1, a: 0.54509807}

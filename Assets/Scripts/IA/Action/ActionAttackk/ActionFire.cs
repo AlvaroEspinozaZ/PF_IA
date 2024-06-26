@@ -38,7 +38,7 @@ public class ActionFire : ActionNodeActions
                 if (((VisionSensorAttack)aICharacterAction._VisionSensor).AttackVision.InSight)
                 {
                     transform.LookAt(aICharacterAction._VisionSensor.EnemyView.transform);
-                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count), aICharacterAction._VisionSensor.EnemyView);
+                    aICharacterAction._VisionSensor.EnemyView.Atacar(intervaloAtaque-0.2f, CalcularDanioDifuso(aICharacterAction._VisionSensor.listAlliedView.Count), aICharacterAction._VisionSensor.EnemyView);
                     aICharacterAction._VisionSensor.EnemyView.Death();
                 }
                 break;

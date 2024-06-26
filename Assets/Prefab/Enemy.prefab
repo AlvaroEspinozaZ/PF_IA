@@ -707,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   armature: 0
-  healthMax: 20
+  healthMax: 30
   _TypeUnit: 1
   typeAgentAllies: 01000000
   AimOffset: {fileID: 4595706769480112324}
@@ -795,7 +795,7 @@ MonoBehaviour:
   randomWaitScandMin: 1
   randomWaitScandMax: 1
   AttackVision:
-    angle: 35
+    angle: 90
     height: 1
     distance: 5
     meshSightIn: {r: 0, g: 1, b: 0, a: 0.53333336}
